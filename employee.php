@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -19,69 +19,60 @@
 </head>
 
 <body>
-<?php
+    <?php
         require('config/config.php');
         require('config/db.php');
 
-        $query = "SELECT employee.lastname, employee.firstname, employee.address, office.name as office_name FROM employee, office where employee.office_id = office.id";
+        $query = 'SELECT employee.lastname, employee.firstname, employee.address, office.name as office_name FROM employee, office WHERE employee.office_id = office.id';
         $result = mysqli_query($conn, $query);
         $offices = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
         mysqli_free_result($result);
         mysqli_close($conn);
+    ?>
 
-        ?>
     <div class="wrapper">
-        <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
+        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
             <div class="sidebar-wrapper">
-                <?php include('includes/sidebar.php'); ?>
-
-                </ul>
+            <?php include('includes/sidebar.php'); ?>    
             </div>
         </div>
         <div class="main-panel">
-            <!-- Navbar -->
-            <?php include('includes/navbar.php'); ?>
-            
-            <!-- End Navbar -->
+            <?php include('includes/navbar.php');?>
             <div class="content">
                 <div class="container-fluid">
                     <div class="section">
                     </div>
-                    <div class = "row">
+                    <div class="row">
                         <div class="col-md-12">
-                            <div class="card strpied-tabled-with-hover">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Employee</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
-                                </div>
-                                <div class="card-body table-full-width table-responsive">
-                                    <table class="table table-hover table-striped">
-                                        <thead>
-                                            <th>Last Name</th>
-                                            <th>First Name</th>
-                                            <th>Address</th>
-                                            <th>Office</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($offices as $office) : ?>
-                                            <tr>
-                                                <td><?php echo $office ['lastname']; ?></td>
-                                                <td><?php echo $office ['firstname']; ?></td>
-                                                <td><?php echo $office ['address']; ?></td>
-                                                <td><?php echo $office ['office_name']; ?></td>
-                                            </tr>
+                                <div class="card strpied-tabled-with-hover">
+                                    <div class="card-header ">
+                                        <h4 class="card-title">Striped Table with Hover</h4>
+                                        <p class="card-category">Here is a subtitle for this table</p>
+                                    </div>
+                                    <div class="card-body table-full-width table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <th>Last Name</th>
+                                                <th>First Name</th>
+                                                <th>Address</th>
+                                                <th>Office</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($offices as $offices) : ?>
+                                                <tr>
+                                                    <td><?php echo $offices['lastname']; ?></td>
+                                                    <td><?php echo $offices['firstname']; ?></td>
+                                                    <td><?php echo $offices['address']; ?></td>
+                                                    <td><?php echo $offices['office_name']; ?></td>
+                                                </tr>
                                                 <?php endforeach ?>
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                    </div>    
                 </div>
             </div>
             <footer class="footer">
