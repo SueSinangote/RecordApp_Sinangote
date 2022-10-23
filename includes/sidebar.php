@@ -17,7 +17,7 @@
         </a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="employees.php">
+        <a class="nav-link" href="employee.php">
             <i class="nc-icon nc-single-02"></i>
             <p>Employee</p>
         </a>
